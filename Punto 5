@@ -1,0 +1,42 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        double[] notasA = new double[5];
+        double[] notasB = new double[5];
+
+        Console.WriteLine("Ingrese las notas del curso A:");
+        for (int i = 0; i < notasA.Length; i++) {
+            Console.Write("Nota del alumno {0}: ", i+1);
+            notasA[i] = double.Parse(Console.ReadLine());
+        }
+        Console.WriteLine("\nIngrese las notas del curso B:");
+        for (int i = 0; i < notasB.Length; i++) {
+            Console.Write("Nota del alumno {0}: ", i+1);
+            notasB[i] = double.Parse(Console.ReadLine());
+        }
+
+        double promedioA = 0, promedioB = 0;
+        for (int i = 0; i < notasA.Length; i++) {
+            promedioA += notasA[i];
+        }
+        promedioA /= notasA.Length;
+
+        for (int i = 0; i < notasB.Length; i++) {
+            promedioB += notasB[i];
+        }
+        promedioB /= notasB.Length;
+
+        if (promedioA > promedioB) {
+            Console.WriteLine("\nEl curso A tiene un promedio general mayor: {0}", promedioA);
+        }
+        else if (promedioB > promedioA) {
+            Console.WriteLine("\nEl curso B tiene un promedio general mayor: {0}", promedioB);
+        }
+        else {
+            Console.WriteLine("\nAmbos cursos tienen el mismo promedio general: {0}", promedioA);
+        }
+
+        Console.ReadLine();
+    }
+}
