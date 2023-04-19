@@ -1,0 +1,23 @@
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        Console.Write("Ingrese el tamaño del vector: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] vector = new int[n];
+
+        Console.WriteLine("Ingrese los valores para el vector:");
+        for (int i = 0; i < vector.Length; i++) {
+            Console.Write("Valor {0}: ", i+1);
+            vector[i] = int.Parse(Console.ReadLine());
+        }
+
+        int suma = 0;
+        for (int i = 0; i < vector.Length; i++) {
+            suma += vector[i];
+        }
+        Console.WriteLine("\nLa suma de los elementos del vector es {0}.", suma);
+        Console.ReadLine();
+    }
+}
