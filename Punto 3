@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] vector = new int[8];
+        int acumulado = 0;
+        int acumuladoMayores36 = 0;
+        int cantidadMayores50 = 0;
+
+        for (int i = 0; i < vector.Length; i++)
+        {
+            Console.Write("Ingrese el elemento " + (i+1) + ": ");
+            vector[i] = int.Parse(Console.ReadLine());
+
+
+            acumulado += vector[i];
+
+            if (vector[i] > 36)
+            {
+                acumuladoMayores36 += vector[i];
+            }
+
+            if (vector[i] > 50)
+            {
+                cantidadMayores50++;
+            }
+        }
+
+        Console.WriteLine("El valor acumulado de todos los elementos del vector es: " + acumulado);
+        Console.WriteLine("El valor acumulado de los elementos del vector mayores a 36 es: " + acumuladoMayores36);
+        Console.WriteLine("La cantidad de elementos del vector mayores a 50 es: " + cantidadMayores50);
+
+        Console.ReadKey();
+    }
+}
