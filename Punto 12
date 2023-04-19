@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+
+class Program {
+    static void Main(string[] args) {
+        List<Tuple<string, List<double>>> paises = new List<Tuple<string, List<double>>>();
+        for (int i = 1; i <= 4; i++) {
+            Console.WriteLine("Ingrese los datos del país {0}:", i);
+
+            Console.Write("Nombre del país: ");
+            string nombre = Console.ReadLine();
+
+            Console.Write("Temperatura media del mes 1: ");
+            double temp1 = double.Parse(Console.ReadLine());
+
+            Console.Write("Temperatura media del mes 2: ");
+            double temp2 = double.Parse(Console.ReadLine());
+
+            Console.Write("Temperatura media del mes 3: ");
+            double temp3 = double.Parse(Console.ReadLine());
+
+            List<double> temperaturas = new List<double>();
+            temperaturas.Add(temp1);
+            temperaturas.Add(temp2);
+            temperaturas.Add(temp3);
+
+            paises.Add(new Tuple<string, List<double>>(nombre, temperaturas));
+        }
+
+        Console.WriteLine("\nLos datos ingresados son:");
+        foreach (Tuple<string, List<double>> pais in paises) {
+            Console.WriteLine("País: {0}", pais.Item1);
+            Console.WriteLine("Temperaturas mensuales: {0}, {1}, {2}", pais.Item2[0], pais.Item2[1], pais.Item2[2]);
+        }
+
+        List<Tuple<string, double>> mediasTrimestrales = new List<Tuple<string, double>>();
+        foreach (Tuple<string, List<double>> pais in paises) {
+            double mediaTrimestral = (pais.Item2[0] + pais.Item2[1] + pais.Item2[2]) / 3;
+            mediasTrimestrales.Add(new Tuple<string, double>(pais.Item1, mediaTrimestral));
+        }
+
+        Console.WriteLine("\nLas temperaturas medias trimestrales son:");
+        foreach (Tuple<string, double> pais in mediasTrimestrales) {
+            Console.WriteLine("País: {0}", pais.Item1);
+            Console.WriteLine("Temperatura media trimestral: {0}", pais.Item2);
+        }
+        string paisMayor = "";
+        double temperaturaMayor = 0;
+        foreach (Tuple<string, double> pais in mediasTrimestrales) {
+            if (pais.Item2 > temperaturaMayor) {
+                paisMayor = pais.Item1;
+                temperaturaMayor = pais.Item2;
+            }
+        }
+
+        Console.WriteLine("\nEl país con la temperatura media trimestral mayor es: {0}", paisMayor);
+
+        Console.ReadLine();
+    }
+}
