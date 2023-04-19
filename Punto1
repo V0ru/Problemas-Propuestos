@@ -1,0 +1,48 @@
+using System;
+
+class Empleado
+{
+    private string nombre;
+    private double sueldo;
+
+    public void CargarDatos()
+    {
+        Console.Write("Ingrese el nombre del empleado: ");
+        nombre = Console.ReadLine();
+
+        Console.Write("Ingrese el sueldo del empleado: ");
+        sueldo = double.Parse(Console.ReadLine());
+    }
+
+    public void ImprimirDatos()
+    {
+        Console.WriteLine("Nombre: " + nombre);
+        Console.WriteLine("Sueldo: $" + sueldo);
+    }
+
+    public void PagarImpuestos()
+    {
+        if (sueldo > 3000)
+        {
+            Console.WriteLine(nombre + " debe pagar impuestos.");
+        }
+        else
+        {
+            Console.WriteLine(nombre + " no debe pagar impuestos.");
+        }
+    }
+}
+
+// Ejemplo de uso de la clase Empleado
+class Program
+{
+    static void Main(string[] args)
+    {
+        Empleado empleado1 = new Empleado();
+        empleado1.CargarDatos();
+        empleado1.ImprimirDatos();
+        empleado1.PagarImpuestos();
+
+        Console.ReadKey();
+    }
+}
